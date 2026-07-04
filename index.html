@@ -3,92 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lars‑Erik – Portfolio</title>
+    <title>Lars‑Erik – Developer Portfolio</title>
 
     <style>
-        /* --- GLOBAL --- */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #e9e9e9;
+            background: #f0f0f0;
             color: #333;
             transition: background 0.4s, color 0.4s;
+            scroll-behavior: smooth;
         }
-
-        /* --- DARK MODE --- */
         body.dark {
             background: #121212;
             color: #e0e0e0;
         }
-        body.dark .section {
-            background: #1e1e1e;
-            box-shadow: 0 4px 10px rgba(255,255,255,0.05);
-        }
-        body.dark header {
-            background: linear-gradient(135deg, #000, #222);
-        }
-        body.dark .skills span {
-            background: #333;
-        }
-        body.dark footer {
-            color: #aaa;
-        }
 
-        /* --- DARK MODE BUTTON --- */
-        #darkToggle {
+        nav {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 0;
+            width: 100%;
             background: #222;
             color: white;
-            padding: 10px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             z-index: 999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        #darkToggle:hover {
-            background: #444;
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            opacity: 0.7;
         }
 
-        /* --- HEADER --- */
-        header {
+        #darkToggle {
+            background: #444;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #darkToggle:hover {
+            background: #666;
+        }
+
+        .hero {
             background: linear-gradient(135deg, #222, #444);
             color: white;
-            padding: 80px 20px;
+            padding: 150px 20px 120px 20px;
             text-align: center;
             animation: fadeIn 1.2s ease-out;
         }
-        header h1 {
-            font-size: 60px;
+        .hero h1 {
+            font-size: 70px;
             margin: 0;
         }
-        header p {
-            font-size: 22px;
+        .hero p {
+            font-size: 26px;
             opacity: 0.9;
         }
-
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 30px;
+        .hero .btn {
+            margin-top: 30px;
+            display: inline-block;
+            background: #fff;
+            color: #222;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 20px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .hero .btn:hover {
+            transform: scale(1.1);
         }
 
-        /* --- SECTIONS --- */
+        .container {
+            max-width: 1300px;
+            margin: auto;
+            padding: 40px;
+        }
+
         .section {
             background: white;
-            padding: 40px;
-            margin-bottom: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 50px;
+            margin-bottom: 50px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             opacity: 0;
             transform: translateY(40px);
             animation: slideUp 1s forwards;
         }
+        body.dark .section {
+            background: #1e1e1e;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+        }
 
-        /* --- ANIMATIONS --- */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -100,60 +116,65 @@
             }
         }
 
-        /* --- SKILLS --- */
         .skills span {
             display: inline-block;
             background: #222;
             color: white;
-            padding: 10px 16px;
-            margin: 6px;
-            border-radius: 6px;
-            font-size: 16px;
+            padding: 12px 20px;
+            margin: 8px;
+            border-radius: 8px;
+            font-size: 18px;
             transition: transform 0.2s;
         }
         .skills span:hover {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
-        /* --- PROJECT GRID --- */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
         .project {
             background: #f7f7f7;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 6px solid #222;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 8px solid #222;
             transition: transform 0.3s;
         }
         .project:hover {
-            transform: translateY(-6px);
+            transform: translateY(-10px);
+        }
+        body.dark .project {
+            background: #2a2a2a;
+            border-left-color: #555;
         }
 
-        /* --- TIMELINE --- */
-        .timeline {
-            border-left: 4px solid #222;
-            padding-left: 20px;
-        }
-        .timeline-item {
-            margin-bottom: 25px;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: #555;
+        }
+        body.dark footer {
+            color: #aaa;
         }
     </style>
 </head>
 <body>
 
-<!-- DARK MODE BUTTON -->
-<div id="darkToggle">Dark Mode</div>
+<nav>
+    <div><strong>Lars‑Erik</strong></div>
+    <div>
+        <a href="#about">Über mich</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projekte</a>
+        <a href="agb.html">AGB</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <span id="darkToggle">Dark Mode</span>
+    </div>
+</nav>
 
 <script>
     const toggle = document.getElementById("darkToggle");
@@ -165,41 +186,61 @@
     };
 </script>
 
-<header>
+<div class="hero">
     <h1>Lars‑Erik</h1>
     <p>Programmierer • Kreativer Entwickler • Projektbauer</p>
-</header>
+    <a class="btn" href="#projects">Meine Projekte ansehen</a>
+</div>
 
 <div class="container">
 
-    <!-- ÜBER MICH -->
-    <div class="section">
+    <div class="section" id="about">
         <h2>Über mich</h2>
         <p>
-            Hallo! Ich bin Lars‑Erik aus der Schweiz und bin Developer
+            Ich bin Lars‑Erik aus Zürich.  
+            Ich baue leidenschaftlich Software, Tools, Simulatoren und kreative Projekte.  
+            Mein Fokus liegt auf modularen Architekturen, klaren Workflows und professionellen Strukturen.
         </p>
     </div>
 
-    <!-- SKILLS -->
-    <div class="section">
+    <div class="section" id="skills">
         <h2>Meine Stärken</h2>
         <div class="skills">
             <span>Python</span>
             <span>Java</span>
-            <span>HTML</span>
+            <span>GUI‑Design</span>
             <span>Netzwerk‑Programmierung</span>
+            <span>3D‑Simulation</span>
+            <span>Modulare Architektur</span>
+            <span>Ursina Engine</span>
             <span>Server‑Entwicklung</span>
+            <span>Game‑Design</span>
+            <span>Projekt‑Management</span>
         </div>
     </div>
 
-    <!-- PROJEKTE -->
-    <div class="section">
+    <div class="section" id="projects">
         <h2>Projekte</h2>
         <div class="project-grid">
 
             <div class="project">
-                <h3>Minecraft Clients</h3>
-                <p>Hack clients, 1.8.9 pvp client</p>
+                <h3>Multiplayer‑Server & Chat‑Apps</h3>
+                <p>Serverarchitektur, Rollen‑System, Admin‑Tools, Moderation, GUI‑Client.</p>
+            </div>
+
+            <div class="project">
+                <h3>Speedcubing‑Trainer</h3>
+                <p>Timer, Scramble‑Generator, Analyse‑Tools, Leaderboard, Statistiken.</p>
+            </div>
+
+            <div class="project">
+                <h3>3D‑Drohnen‑Simulator</h3>
+                <p>Realistische Physik, Wind, FPV‑Kamera, Missionen, Ursina Engine.</p>
+            </div>
+
+            <div class="project">
+                <h3>Minecraft‑ähnlicher PvP‑Client</h3>
+                <p>Event‑System, Module‑Manager, Rendering‑Hooks, GUI‑Overlay.</p>
             </div>
 
             <div class="project">
@@ -210,43 +251,10 @@
         </div>
     </div>
 
-    <!-- TIMELINE -->
-    <div class="section">
-        <h2>Meine Entwickler‑Reise</h2>
-        <div class="timeline">
-
-            <div class="timeline-item">
-                <h4>2023 – Erste Python‑Projekte</h4>
-                <p>GUI‑Apps, kleine Spiele, Netzwerk‑Grundlagen.</p>
-            </div>
-
-            <div class="timeline-item">
-                <h4>2024 – Multiplayer‑Server</h4>
-                <p>Chat‑System, Rollen, Admin‑Tools, Moderation.</p>
-            </div>
-
-            <div class="timeline-item">
-                <h4>2026 – Große Projekte</h4>
-                <p>PvP‑Client, professionelle Workflows.</p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- KONTAKT -->
-    <div class="section">
-        <h2>Kontakt</h2>
-        <p>
-            GitHub: <strong>github.com/LarsErikK</strong><br>
-            E‑Mail: <strong>larserik.kenesei@gmail.com</strong>
-        </p>
-    </div>
-
 </div>
 
 <footer>
     © 2026 Lars‑Erik – Alle Rechte vorbehalten
-    bei jeglicher Verstossung der © Rechte werden 250CHF Gebühren verlangt.
 </footer>
 
 </body>
