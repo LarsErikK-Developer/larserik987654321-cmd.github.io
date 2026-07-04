@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Login – Geschützter Bereich</title>
+<title>Admin Login</title>
 
 <style>
 body {
@@ -19,48 +19,19 @@ body {
     background: rgba(255,255,255,0.05);
     padding: 40px;
     border-radius: 16px;
-    backdrop-filter: blur(12px);
     width: 320px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    margin-top: 12px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-}
-
-button {
-    margin-top: 20px;
-    padding: 12px;
-    width: 100%;
-    border-radius: 8px;
-    border: none;
-    background: #38bdf8;
-    color: #0f172a;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#error {
-    margin-top: 12px;
-    color: #f87171;
-    display: none;
 }
 </style>
 </head>
 <body>
 
 <div class="box">
-    <h2>Login</h2>
-    <input type="text" id="user" placeholder="Benutzername">
-    <input type="password" id="pw" placeholder="Passwort">
+    <h2>Admin Login</h2>
+    <input id="user" placeholder="Benutzername"><br>
+    <input id="pw" type="password" placeholder="Passwort"><br>
     <button onclick="login()">Login</button>
-    <div id="error">Falsche Daten!</div>
+    <p id="err" style="color:red; display:none;">Falsche Daten!</p>
 </div>
 
 <script>
@@ -69,22 +40,14 @@ function login() {
     const p = document.getElementById("pw").value.trim();
 
     const users = {
-        "admin": "admin123",
-        "lars": "passwort",
-        "user": "1234"
+        "admin": "admin123"
     };
 
     if (users[u] && users[u] === p) {
-
-        let visitors = JSON.parse(localStorage.getItem("visitors") || "[]");
-        visitors.push({ name: u, time: new Date().toLocaleString() });
-        localStorage.setItem("visitors", JSON.stringify(visitors));
-
-        localStorage.setItem("role", u === "admin" ? "admin" : "user");
-
+        localStorage.setItem("role", "admin");
         window.location.href = "dashboard.html";
     } else {
-        document.getElementById("error").style.display = "block";
+        document.getElementById("err").style.display = "block";
     }
 }
 </script>
