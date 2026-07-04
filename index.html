@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lars‑Erik – Interactive Portfolio</title>
+<title>Lars‑Erik – Startseite</title>
 
 <style>
-/* ------------------------------ */
-/* GLOBAL */
-/* ------------------------------ */
 :root {
     --accent: #38bdf8;
     --accent-soft: rgba(56, 189, 248, 0.2);
@@ -24,7 +21,6 @@ body {
     background: var(--bg-dark);
     color: var(--text-dark);
     transition: background 0.4s, color 0.4s;
-    scroll-behavior: smooth;
 }
 
 body.light {
@@ -32,22 +28,7 @@ body.light {
     color: var(--text-light);
 }
 
-/* ------------------------------ */
-/* SCROLL PROGRESS BAR */
-/* ------------------------------ */
-#scrollProgress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: var(--accent);
-    width: 0%;
-    z-index: 9999;
-}
-
-/* ------------------------------ */
 /* NAVIGATION */
-/* ------------------------------ */
 nav {
     position: fixed;
     top: 0;
@@ -82,22 +63,14 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* ------------------------------ */
 /* HERO */
-/* ------------------------------ */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 80px;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-content {
     text-align: center;
-    z-index: 2;
 }
 
 .hero h1 {
@@ -110,306 +83,75 @@ nav a:hover {
     opacity: 0.8;
 }
 
-/* Parallax circles */
-.circle {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    filter: blur(40px);
-    animation: float 8s infinite ease-in-out;
+/* BADGES */
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.circle1 { width: 300px; height: 300px; top: 10%; left: 20%; }
-.circle2 { width: 200px; height: 200px; bottom: 15%; right: 25%; }
-.circle3 { width: 250px; height: 250px; top: 40%; right: 10%; }
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-40px); }
-    100% { transform: translateY(0px); }
+.admin {
+    background: #38bdf8;
+    color: #0f172a;
 }
 
-/* ------------------------------ */
-/* SECTIONS */
-/* ------------------------------ */
-.section {
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 40px;
-    background: rgba(15, 23, 42, 0.85);
-    border-radius: 20px;
-    border: 1px solid rgba(148, 163, 184, 0.4);
-    backdrop-filter: blur(18px);
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.6s ease-out;
+.user {
+    background: #4ade80;
+    color: #064e3b;
 }
 
-body.light .section {
-    background: rgba(255, 255, 255, 0.9);
+.visitor-count {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.7;
 }
 
-/* ------------------------------ */
-/* INTERACTIVE SKILL BARS */
-/* ------------------------------ */
-.skill-bar {
-    margin: 20px 0;
-}
-
-.skill-label {
+/* BUTTONS */
+.btn {
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: none;
+    background: var(--accent);
+    color: #0f172a;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
     font-size: 16px;
-    margin-bottom: 6px;
 }
 
-.skill-fill {
-    height: 12px;
-    background: rgba(148, 163, 184, 0.3);
-    border-radius: 999px;
-    overflow: hidden;
+.btn:hover {
+    transform: translateY(-2px);
 }
-
-.skill-fill div {
-    height: 100%;
-    width: 0%;
-    background: var(--accent);
-    border-radius: 999px;
-    transition: width 1.4s ease-out;
-}
-
-/* ------------------------------ */
-/* INTERACTIVE PROJECT FILTER */
-/* ------------------------------ */
-.filter-buttons {
-    margin-bottom: 20px;
-}
-
-.filter-buttons button {
-    padding: 8px 16px;
-    margin-right: 10px;
-    border-radius: 999px;
-    border: 1px solid var(--accent);
-    background: transparent;
-    color: var(--accent);
-    cursor: pointer;
-}
-
-.filter-buttons button.active {
-    background: var(--accent);
-    color: #0f172a;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-.project-card {
-    padding: 20px;
-    border-radius: 16px;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid rgba(148, 163, 184, 0.4);
-    transition: 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-}
-
-body.light .project-card {
-    background: rgba(255, 255, 255, 0.9);
-}
-
-/* ------------------------------ */
-/* FAQ ACCORDION */
-/* ------------------------------ */
-.faq-item {
-    margin-bottom: 20px;
-}
-
-.faq-question {
-    font-size: 18px;
-    cursor: pointer;
-    padding: 10px;
-    background: rgba(148, 163, 184, 0.2);
-    border-radius: 10px;
-}
-
-.faq-answer {
-    display: none;
-    padding: 10px;
-    margin-top: 8px;
-    background: rgba(148, 163, 184, 0.1);
-    border-radius: 10px;
-}
-
-/* ------------------------------ */
-/* CHAT BUBBLE */
-/* ------------------------------ */
-.chat-bubble {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--accent);
-    color: #0f172a;
-    padding: 14px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
-    z-index: 999;
-}
-
-.chat-window {
-    position: fixed;
-    bottom: 90px;
-    right: 30px;
-    width: 260px;
-    background: rgba(15, 23, 42, 0.95);
-    border-radius: 16px;
-    padding: 20px;
-    display: none;
-    color: var(--text-dark);
-    border: 1px solid rgba(148, 163, 184, 0.4);
-}
-
-body.light .chat-window {
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--text-light);
-}
-
 </style>
 </head>
 <body>
 
-<div id="scrollProgress"></div>
-
 <nav>
     <div><strong>Lars‑Erik</strong></div>
     <div>
-        <a href="#about">Über mich</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projekte</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Kontakt</a>
+        <a href="login.html">Login</a>
+        <a href="dashboard.html">Dashboard</a>
         <button id="modeToggle">Dark Mode</button>
     </div>
 </nav>
 
 <section class="hero">
-    <div class="circle circle1"></div>
-    <div class="circle circle2"></div>
-    <div class="circle circle3"></div>
-
-    <div class="hero-content">
-        <h1>Lars‑Erik</h1>
+    <div>
+        <h1>Willkommen auf meiner Webseite</h1>
         <p>Developer • Creator • Innovator</p>
+
+        <div id="roleBadge"></div>
+        <div id="visitorInfo" class="visitor-count"></div>
+
+        <div id="actionButtons"></div>
     </div>
 </section>
 
-<div class="section" id="about">
-    <h2>Über mich</h2>
-    <p>Ich baue moderne Software, Multiplayer‑Server, Tools und Simulatoren.</p>
-</div>
-
-<div class="section" id="skills">
-    <h2>Interaktive Skills</h2>
-
-    <div class="skill-bar">
-        <div class="skill-label">Python</div>
-        <div class="skill-fill"><div data-skill="90"></div></div>
-    </div>
-
-    <div class="skill-bar">
-        <div class="skill-label">Java</div>
-        <div class="skill-fill"><div data-skill="80"></div></div>
-    </div>
-
-    <div class="skill-bar">
-        <div class="skill-label">3D‑Simulation</div>
-        <div class="skill-fill"><div data-skill="85"></div></div>
-    </div>
-</div>
-
-<div class="section" id="projects">
-    <h2>Interaktive Projekt‑Filter</h2>
-
-    <div class="filter-buttons">
-        <button class="active" data-filter="all">Alle</button>
-        <button data-filter="server">Server</button>
-        <button data-filter="sim">Simulation</button>
-        <button data-filter="tools">Tools</button>
-    </div>
-
-    <div class="project-grid">
-        <div class="project-card" data-cat="server">
-            <h3>Multiplayer‑Server</h3>
-            <p>Rollen‑System, Moderation, GUI‑Client.</p>
-        </div>
-
-        <div class="project-card" data-cat="tools">
-            <h3>Speedcubing‑Trainer</h3>
-            <p>Timer, Analyse, Scrambles.</p>
-        </div>
-
-        <div class="project-card" data-cat="sim">
-            <h3>3D‑Drohnen‑Simulator</h3>
-            <p>Physik, FPV, Missionen.</p>
-        </div>
-
-        <div class="project-card" data-cat="tools">
-            <h3>Python‑Games</h3>
-            <p>Animationen, GUI‑Design.</p>
-        </div>
-    </div>
-</div>
-
-<div class="section" id="faq">
-    <h2>FAQ – Interaktive Fragen</h2>
-
-    <div class="faq-item">
-        <div class="faq-question">Welche Projekte baust du?</div>
-        <div class="faq-answer">Server, Tools, Simulatoren, Games.</div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Welche Sprachen nutzt du?</div>
-        <div class="faq-answer">Python, Java.</div>
-    </div>
-
-    <div class="faq-item">
-        <div class="faq-question">Kann man dich kontaktieren?</div>
-        <div class="faq-answer">Ja, über die Kontakt‑Sektion.</div>
-    </div>
-</div>
-
-<div class="section" id="contact">
-    <h2>Kontakt</h2>
-    <p>GitHub: github.com/LarsErikK</p>
-    <p>E‑Mail: deine-email@example.com</p>
-</div>
-
-<div class="chat-bubble">Chat?</div>
-
-<div class="chat-window">
-    <strong>Hi!</strong><br><br>
-    Brauchst du Hilfe oder Infos?<br><br>
-    <em>Dies ist eine interaktive Chat‑Bubble.</em>
-</div>
-
 <script>
-/* ------------------------------ */
-/* SCROLL PROGRESS BAR */
-/* ------------------------------ */
-window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const progress = (scrollTop / docHeight) * 100;
-    document.getElementById("scrollProgress").style.width = progress + "%";
-});
-
-/* ------------------------------ */
 /* DARK MODE */
-/* ------------------------------ */
 const modeToggle = document.getElementById("modeToggle");
 modeToggle.onclick = () => {
     document.body.classList.toggle("light");
@@ -418,72 +160,41 @@ modeToggle.onclick = () => {
         : "Light Mode";
 };
 
-/* ------------------------------ */
-/* SECTION FADE-IN */
-/* ------------------------------ */
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-        }
-    });
-}, { threshold: 0.2 });
+/* LOGIN STATUS */
+const role = localStorage.getItem("role");
+const badge = document.getElementById("roleBadge");
+const actions = document.getElementById("actionButtons");
+const visitorInfo = document.getElementById("visitorInfo");
 
-document.querySelectorAll(".section").forEach(sec => observer.observe(sec));
+if (role === "admin") {
+    badge.innerHTML = "<div class='badge admin'>Admin</div>";
+    actions.innerHTML = `
+        <button class="btn" onclick="location.href='dashboard.html'">Admin-Dashboard</button>
+        <button class="btn" onclick="location.href='server.html'">Server-Konsole</button>
+        <button class="btn" onclick="logout()">Logout</button>
+    `;
+} else if (role === "user") {
+    badge.innerHTML = "<div class='badge user'>User</div>";
+    actions.innerHTML = `
+        <button class="btn" onclick="location.href='dashboard.html'">User-Dashboard</button>
+        <button class="btn" onclick="logout()">Logout</button>
+    `;
+} else {
+    badge.innerHTML = "<div class='badge' style='background:#475569;'>Gast</div>";
+    actions.innerHTML = `
+        <button class="btn" onclick="location.href='login.html'">Login</button>
+    `;
+}
 
-/* ------------------------------ */
-/* SKILL BARS */
-/* ------------------------------ */
-document.querySelectorAll("[data-skill]").forEach(bar => {
-    const value = bar.getAttribute("data-skill");
-    setTimeout(() => {
-        bar.style.width = value + "%";
-    }, 500);
-});
+/* VISITOR COUNTER */
+const visitors = JSON.parse(localStorage.getItem("visitors") || "[]");
+visitorInfo.innerText = "Besucher gespeichert: " + visitors.length;
 
-/* ------------------------------ */
-/* PROJECT FILTER */
-/* ------------------------------ */
-const filterButtons = document.querySelectorAll(".filter-buttons button");
-const cards = document.querySelectorAll(".project-card");
-
-filterButtons.forEach(btn => {
-    btn.onclick = () => {
-        filterButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const filter = btn.getAttribute("data-filter");
-
-        cards.forEach(card => {
-            card.style.display =
-                filter === "all" || card.getAttribute("data-cat") === filter
-                    ? "block"
-                    : "none";
-        });
-    };
-});
-
-/* ------------------------------ */
-/* FAQ ACCORDION */
-/* ------------------------------ */
-document.querySelectorAll(".faq-question").forEach(q => {
-    q.onclick = () => {
-        const answer = q.nextElementSibling;
-        answer.style.display = answer.style.display === "block" ? "none" : "block";
-    };
-});
-
-/* ------------------------------ */
-/* CHAT BUBBLE */
-/* ------------------------------ */
-const bubble = document.querySelector(".chat-bubble");
-const chatWindow = document.querySelector(".chat-window");
-
-bubble.onclick = () => {
-    chatWindow.style.display =
-        chatWindow.style.display === "block" ? "none" : "block";
-};
+/* LOGOUT */
+function logout() {
+    localStorage.removeItem("role");
+    window.location.href = "index.html";
+}
 </script>
 
 </body>
